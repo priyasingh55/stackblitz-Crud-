@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Crud Basics</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="crudBasics.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script type="module" src="CrudBasics.js"></script>
+  </head>
+  <body>
+    <h2>Crud App</h2>
+    <div class="container">
+      <div class="left">
+        <form id="form">
+          <label for=""><strong>Write your post here</strong></label>
+          <br /><br />
+          <input
+            type="text"
+            id="headingInput"
+            placeholder="Enter heading..."
+            class="heading-input"
+          />
+          <br /><br />
+          <textarea
+            name=""
+            id="contentInput"
+            cols="30"
+            rows="10"
+            placeholder="Enter content here....."
+          ></textarea>
+          <br /><br />
+          <div id="msg"></div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <div class="right">
+        <h3>Your post here</h3>
+        <div id="posts">
+          <div>
+            <p>
+              <strong>Software Developer</strong>
+              <br />
+              <span>I m a software developer</span>
+            </p>
+
+            <span class="options">
+              <i onClick="editPost(this)" class="fa-solid fa-pen-to-square"></i>
+              <i onClick="deletePost(this)" class="fa-solid fa-trash"></i>
+            </span>
+          </div>
+          <div>
+            <p>
+              <strong>FullStack Developer</strong>
+              <br />
+              <span>I m a Fullstack developer</span>
+            </p>
+            <span class="options">
+              <i onClick="editPost(this)" class="fa-solid fa-pen-to-square"></i>
+              <i onClick="deletePost(this)" class="fa-solid fa-trash"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Another html file for todo app -->
+    <!-- <a href="todoApp.html">Go to Todo App</a> -->
+  </body>
+</html>
