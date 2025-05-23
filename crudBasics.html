@@ -43,31 +43,37 @@
         <h3>Your post here</h3>
         <div id="posts">
           <div>
-            <p>
+            <input type="checkbox" class="post-checkbox">
+            <p >
               <strong>Software Developer</strong>
               <br />
               <span>I m a software developer</span>
             </p>
 
             <span class="options">
-              <i onClick="editPost(this)" class="fa-solid fa-pen-to-square"></i>
-              <i onClick="deletePost(this)" class="fa-solid fa-trash"></i>
+              <i onclick="editPost(this)" class="fa-solid fa-pen-to-square"></i>
+              <i onclick="postdelete(this)" class="fa-solid fa-trash"></i>
             </span>
           </div>
           <div>
+            <input type="checkbox" class="post-checkbox">
             <p>
               <strong>FullStack Developer</strong>
               <br />
               <span>I m a Fullstack developer</span>
-            </p>
+            </p> 
             <span class="options">
-              <i onClick="editPost(this)" class="fa-solid fa-pen-to-square"></i>
-              <i onClick="deletePost(this)" class="fa-solid fa-trash"></i>
-            </span>
+              <i onclick="editPost(this)" class="fa-solid fa-pen-to-square"></i>
+              <i onclick="postdelete(this)" class="fa-solid fa-trash"></i>
+            </span> 
           </div>
+         
         </div>
       </div>
+      
     </div>
+    <button id="deleteSelectedBtn">Delete all selected post</button>
+   
 
     <!-- Another html file for todo app -->
     <!-- <a href="todoApp.html">Go to Todo App</a> -->
