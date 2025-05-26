@@ -27,11 +27,79 @@ let formValidation = () => {
 
 let data = {};
 
+
+
+window.editPost = (e) => {
+  const postElement = e.parentElement.parentElement;
+  const heading = postElement.querySelector('strong').textContent;
+  const content = postElement.querySelector('span').textContent;
+  
+  headingInput.value = heading;
+  contentInput.value = content;
+  
+ 
+  currentlyEditingSingle = postElement;
+  currentlyEditingMultiple = null;
+};
+
+
+window.multiEdit = () => {
+  const selectedCheckboxes = document.querySelectorAll('.post-checkbox:checked');
+  
+  if (selectedCheckboxes.length === 0) {
+    msg.innerHTML = 'Please select at least one post to edit';
+    return;
+  }
+  
+
+  currentlyEditingSingle = null;
+  currentlyEditingMultiple = Array.from(selectedCheckboxes).map(checkbox => checkbox.parentElement);
+  
+ 
+  const firstPost = currentlyEditingMultiple[0];
+  headingInput.value = firstPost.querySelector('strong').textContent;
+  contentInput.value = firstPost.querySelector('span').textContent;
+  
+  msg.innerHTML = `Editing ${currentlyEditingMultiple.length} posts`;
+
+
+};
+
+
 let acceptData = () => {
   data = { heading: headingInput.value, content: contentInput.value };
   console.log('Data pushed..', data);
-  createPost();
+  
+  if (currentlyEditingSingle) {
+   
+    updatePost(currentlyEditingSingle);
+    currentlyEditingSingle = null;
+  } else if (currentlyEditingMultiple) {
+   
+    currentlyEditingMultiple.forEach(post => updatePost(post));
+    currentlyEditingMultiple = null;
+    msg.innerHTML = `Updated ${currentlyEditingMultiple.length} posts`;
+  } else {
+   
+    createPost();
+  }
+  
+
+  headingInput.value = '';
+  contentInput.value = '';
 };
+
+
+function updatePost(postElement) {
+  postElement.querySelector('strong').textContent = data.heading;
+  postElement.querySelector('span').textContent = data.content;
+}
+
+
+let currentlyEditingSingle = null;
+let currentlyEditingMultiple = null;
+
+
 
 
 let createPost = () => {
@@ -54,15 +122,8 @@ let createPost = () => {
 };
 
 
-window.editPost = (e) => {
-  const postElement = e.parentElement.parentElement;
-  const heading = postElement.querySelector('strong').textContent;
-  const content = postElement.querySelector('span').textContent;
-  
-  headingInput.value = heading;
-  contentInput.value = content;
-  postElement.remove();
-};
+document.getElementById('multiEditBtn').addEventListener('click', multiEdit);
+
 
 window.postdelete = (e) => {
   e.parentElement.parentElement.remove();
@@ -78,4 +139,4 @@ function deleteSelectedPosts() {
   });
   
   
-}
+} 

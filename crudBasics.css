@@ -8,6 +8,7 @@ body {
 .container {
   display: flex;
   gap: 40px;
+  /* background-color: gray; */
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -15,7 +16,7 @@ body {
 .left,
 .right {
   padding: 25px;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: rgb(174, 241, 247);
 }
